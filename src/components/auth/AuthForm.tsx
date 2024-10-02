@@ -77,7 +77,7 @@ const AuthForm = () => {
                 color="primary"
                 fullWidth
                 type="submit"
-                sx={{ mt: 2 }}
+                sx={{ mt: 4 }}
                 data-testid="login-button"
               >
                 Login
