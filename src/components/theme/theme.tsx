@@ -1,7 +1,15 @@
-// src/theme.ts
 import { createTheme } from '@mui/material/styles';
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
 
-const theme = createTheme({
+export const customColorPalette = {
+  betfredBlue: '#004990',
+  betfredLightBlue: '#3581cb',
+  betfredInteseBlue: '#0095FE',
+}
+
+export const theme = createTheme({
   palette: {
     mode: 'light', // 'dark' for dark mode
     primary: {
@@ -12,6 +20,7 @@ const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: 'Exo, Arial, sans-serif',
     h5: {
       fontWeight: 600,
       fontSize: '1.75rem',
@@ -31,4 +40,3 @@ const theme = createTheme({
   },
 });
 
-export default theme;

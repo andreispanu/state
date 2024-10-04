@@ -28,8 +28,6 @@ describe("Auth Component", () => {
     cy.contains('Email is required').should('be.visible');
   });
 
-
-
   it('shows a validation error for invalid email', () => {
     // Enter a valid username and invalid email
     cy.get('input[name="username"]').type('JohnDoe');
