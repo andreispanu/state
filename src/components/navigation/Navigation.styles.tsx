@@ -33,7 +33,7 @@ export const StyledLink = styled(Link)({
   color: theme.palette.common.white,
   fontWeight: theme.typography.fontWeightBold,
   padding: '5px 10px',
-  '&:hover': {
+  '&:hover, &.active': {
     borderRadius: theme.spacing(4),
     backgroundColor: theme.palette.common.black,
     color: customColorPalette.betfredInteseBlue, 

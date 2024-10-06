@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { TextField, Button, Box, Typography, Container, Paper } from '@mui/material';
 import { useFormik } from 'formik';
 import { authFormValidationSchema } from "./AuthForm.types";
+import { useNavigate } from "react-router-dom";
 
 
 const AuthForm = () => {
@@ -13,6 +14,12 @@ const AuthForm = () => {
     dispatch(logout());
   };
 
+  const navigate = useNavigate();
+
+  const redirectToHome = () => {
+    navigate('/');
+  }
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -21,6 +28,7 @@ const AuthForm = () => {
     validationSchema: authFormValidationSchema,
     onSubmit: (values) => {
       dispatch(login({ username: values.username, email: values.email }));
+      redirectToHome()
     },
   });
 
@@ -29,7 +37,7 @@ const AuthForm = () => {
       <Paper elevation={3} sx={{ padding: 4, mt: 5 }}>
         {isAuthenticated ? (
           <Box data-testid="loggedIn-form-container">
-            <Typography variant="h5">Welcome, {user?.username}!</Typography>
+            <Typography variant="h5">Hello, {user?.username}!</Typography>
             <Typography variant="body1">Email: {user?.email}</Typography>
             <Button
               variant="contained"
