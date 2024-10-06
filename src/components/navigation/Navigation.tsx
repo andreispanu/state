@@ -14,7 +14,7 @@ const Navigation = () => {
               <StyledLink to="/" className={location.pathname === "/" ? 'active':''}>Home</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to="/login" className={location.pathname === "/login" ? 'active':''}>Login</StyledLink>
+              <StyledLink to="/login" className={location.pathname === "/login" ? 'active':''}>User Account</StyledLink>
             </StyledListItem>
           </StyledUnorderedList>
           </StyledNavigationContent>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import theme, { customColorPalette } from '../theme';
 
 export const StyledNavigationContainer = styled('nav')({
-  backgroundColor: customColorPalette.betfredLightBlue,
+  backgroundColor: customColorPalette.lightBlue,
   padding: theme.spacing(1),
   textAlign: 'center',
 });
@@ -36,6 +36,6 @@ export const StyledLink = styled(Link)({
   '&:hover, &.active': {
     borderRadius: theme.spacing(4),
     backgroundColor: theme.palette.common.black,
-    color: customColorPalette.betfredInteseBlue, 
+    color: customColorPalette.inteseBlue, 
   },
 });

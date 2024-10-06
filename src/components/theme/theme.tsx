@@ -4,9 +4,9 @@ import { createTheme } from '@mui/material/styles';
 </style>
 
 export const customColorPalette = {
-  betfredBlue: '#004990',
-  betfredLightBlue: '#3581cb',
-  betfredInteseBlue: '#0095FE',
+  darkBlue: '#004990',
+  lightBlue: '#3581cb',
+  inteseBlue: '#0095FE',
 }
 
 export const theme = createTheme({

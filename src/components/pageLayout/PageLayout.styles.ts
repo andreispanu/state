@@ -3,8 +3,9 @@ import { customColorPalette } from '../theme';
 
 export const  StyledPageLayout = styled('div')({
   padding: '20px',
-  backgroundColor: customColorPalette.betfredBlue,
+  backgroundColor: customColorPalette.darkBlue,
   height: 'calc(100vh - 43px)',
+  overflow: 'auto',
 });
 
 export const  StyledPageLayoutContainer = styled('div')({
