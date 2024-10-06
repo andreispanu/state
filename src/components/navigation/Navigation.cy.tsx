@@ -8,30 +8,24 @@ describe('Navigation bar', () => {
     cy.get('[data-testid="navigation-container"]').should('be.visible')
   })
 
-    it('navigates to form page', () => {
+    it('navigates to login page', () => {
         mount(<BrowserRouter><Navigation /></BrowserRouter>)
-        cy.get('a[href="/form"]').click()
-        cy.url().should('include', '/form')
-    })
-
-    it('navigates to test page', () => {
-        mount(<BrowserRouter><Navigation /></BrowserRouter>)
-        cy.get('a[href="/test"]').click()
-        cy.url().should('include', '/test')
+        cy.get('a[href="/login"]').click()
+        cy.url().should('include', '/login')
     })
 
     it('navigates to home page', () => {
         mount(<BrowserRouter><Navigation /></BrowserRouter>)
         cy.get('a[href="/"]').click()
-        cy.url().should('not.include', '/form')
+        cy.url().should('not.include', '/login')
         cy.url().should('not.include', '/test')
     })
 
-    it('navigates to form page and back to home page', () => {
+    it('navigates to login page and back to home page', () => {
         mount(<BrowserRouter><Navigation /></BrowserRouter>)
-        cy.get('a[href="/form"]').click()
-        cy.url().should('include', '/form')
+        cy.get('a[href="/login"]').click()
+        cy.url().should('include', '/login')
         cy.get('a[href="/"]').click()
-        cy.url().should('not.include', '/form')
+        cy.url().should('not.include', '/login')
     })
 })

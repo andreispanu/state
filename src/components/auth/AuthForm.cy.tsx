@@ -2,12 +2,15 @@ import AuthForm from "./AuthForm";
 import { mount } from "cypress/react18";
 import { Provider } from "react-redux";
 import store from "../../store";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 describe("Auth Component", () => {
   beforeEach(() => {
     mount(
       <Provider store={store}>
-        <AuthForm />
+        <Router>
+          <AuthForm />
+        </Router>
       </Provider>
     );
   });
