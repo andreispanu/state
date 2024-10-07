@@ -36,6 +36,6 @@ export const UserData = () => {
 
   return (
     isAuthenticated &&
-    user && <Card title="Logged in User Homepage" data={userDataContent} />
+    user && <Card title="Logged in User Homepage">{userDataContent}</Card>
   );
 };

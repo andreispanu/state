@@ -4,7 +4,7 @@ import { CardProps } from "./Card.types";
 import theme from "../theme";
 
 const Card = (props: CardProps) => {
-  const { title, data } = props;
+  const { title, children } = props;
 
   return (
     <StyledCard>
@@ -16,7 +16,7 @@ const Card = (props: CardProps) => {
         >
           {title}
         </Typography>
-        {data}
+        {children}
       </StyledCardContent>
     </StyledCard>
   );

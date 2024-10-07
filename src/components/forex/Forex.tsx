@@ -60,7 +60,7 @@ const Forex = () => {
     );
   };
 
-  return <Card title="Homepage with Forex Data" data={forexContent()} />;
+  return <Card title="Homepage with Forex Data - React Query">{forexContent()}</Card>;
 };
 
 export default Forex;
