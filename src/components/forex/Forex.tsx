@@ -1,37 +1,48 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import {fetchForexData} from './index';
-import { CircularProgress, List, ListItem, ListItemText, Typography } from '@mui/material';
-import { StyledCard, StyledCardContent } from './Forex.styles';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchForexData } from "./index";
+import {
+  CircularProgress,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  Box,
+} from "@mui/material";
+import Card from "../card";
+import theme from "../theme";
 
 const Forex = () => {
-  const { data:forex, error, isLoading, isError } = useQuery({
-    queryFn: fetchForexData, 
-    queryKey: ['forexData'], 
+  const {
+    data: forex,
+    error,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryFn: fetchForexData,
+    queryKey: ["forexData"],
   });
 
   if (isLoading) {
-    return <div>Loading data from Forex</div>;
+    return <Box>Loading data from Forex</Box>;
   }
 
   if (isError) {
-    return <div>Error: {error.message}</div>;
+    return <Box>Error: {error.message}</Box>;
   }
 
-  return (
-    <StyledCard>
-      <StyledCardContent>
-        <Typography variant="h4" gutterBottom>
-          Forex Data
-        </Typography>
-
+  const forexContent = () => {
+    return (
+      <>
         {isLoading ? (
           <CircularProgress />
         ) : error ? (
           <Typography color="error">Error: {error}</Typography>
         ) : (
-          <div>
-            <Typography variant="h6">Base Currency: {forex.base}</Typography>
+          <Box>
+            <Typography variant="h6" ml={theme.spacing(2)}>
+              Base Currency: {forex.base}
+            </Typography>
             <List>
               {forex.rates &&
                 Object.keys(forex.rates).map((currency) => (
@@ -43,11 +54,13 @@ const Forex = () => {
                   </ListItem>
                 ))}
             </List>
-          </div>
+          </Box>
         )}
-      </StyledCardContent>
-    </StyledCard>
-  );
+      </>
+    );
+  };
+
+  return <Card title="Homepage with Forex Data" data={forexContent()} />;
 };
 
 export default Forex;

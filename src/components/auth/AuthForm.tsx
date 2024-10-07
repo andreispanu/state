@@ -1,10 +1,16 @@
 import { login, logout } from "../../features/authSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { TextField, Button, Box, Typography, Container, Paper } from '@mui/material';
-import { useFormik } from 'formik';
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  Container,
+  Paper,
+} from "@mui/material";
+import { useFormik } from "formik";
 import { authFormValidationSchema } from "./AuthForm.types";
 import { useNavigate } from "react-router-dom";
-
 
 const AuthForm = () => {
   const dispatch = useAppDispatch();
@@ -17,18 +23,18 @@ const AuthForm = () => {
   const navigate = useNavigate();
 
   const redirectToHome = () => {
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   const formik = useFormik({
     initialValues: {
-      username: '',
-      email: '',
+      username: "",
+      email: "",
     },
     validationSchema: authFormValidationSchema,
     onSubmit: (values) => {
       dispatch(login({ username: values.username, email: values.email }));
-      redirectToHome()
+      redirectToHome();
     },
   });
 
@@ -64,7 +70,9 @@ const AuthForm = () => {
                 value={formik.values.username}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.username && Boolean(formik.errors.username)}
+                error={
+                  formik.touched.username && Boolean(formik.errors.username)
+                }
                 helperText={formik.touched.username && formik.errors.username}
               />
               <TextField
