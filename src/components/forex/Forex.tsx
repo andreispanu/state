@@ -1,17 +1,22 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useAppDispatch } from '../../hooks/hooks'; 
-import { fetchForexData } from '../../features/forexSlice';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import {fetchForexData} from './index';
 import { CircularProgress, List, ListItem, ListItemText, Typography } from '@mui/material';
 import { StyledCard, StyledCardContent } from './Forex.styles';
 
 const Forex = () => {
-  const dispatch: ReturnType<typeof useAppDispatch> = useDispatch();
-  const forex = useSelector((state: any) => state.forex);
+  const { data:forex, error, isLoading, isError } = useQuery({
+    queryFn: fetchForexData, 
+    queryKey: ['forexData'], 
+  });
 
-  useEffect(() => {
-    dispatch(fetchForexData());
-  }, [dispatch]);
+  if (isLoading) {
+    return <div>Loading data from Forex</div>;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <StyledCard>
@@ -20,20 +25,20 @@ const Forex = () => {
           Forex Data
         </Typography>
 
-        {forex.loading ? (
+        {isLoading ? (
           <CircularProgress />
-        ) : forex.error ? (
-          <Typography color="error">Error: {forex.error}</Typography>
+        ) : error ? (
+          <Typography color="error">Error: {error}</Typography>
         ) : (
           <div>
-            <Typography variant="h6">Base Currency: {forex.data.base}</Typography>
+            <Typography variant="h6">Base Currency: {forex.base}</Typography>
             <List>
-              {forex.data.rates &&
-                Object.keys(forex.data.rates).map((currency) => (
+              {forex.rates &&
+                Object.keys(forex.rates).map((currency) => (
                   <ListItem key={currency} divider>
                     <ListItemText
                       primary={currency}
-                      secondary={`Rate: ${forex.data.rates[currency]}`}
+                      secondary={`Rate: ${forex.rates[currency]}`}
                     />
                   </ListItem>
                 ))}
