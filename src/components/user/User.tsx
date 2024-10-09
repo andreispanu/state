@@ -6,6 +6,8 @@ import Card from "../card";
 export const UserData = () => {
   const { isAuthenticated, user } = useAppSelector((state) => state.auth);
 
+  const technologiesUsed = ['React JS', 'Typescript', 'Redux - Redux Toolkit for the User Data', 'React Query - Fetch the Forex API data', 'React Router - Navigation between sections', 'Material UI - with Styled Components', 'Formik - User Login Form', 'Yup - User Login Form Schema Validation', 'Cypress - Component Tests for the User Login Form and Navigation'];  
+
   const userDataContent = (
     <>
       <Typography
@@ -19,17 +21,9 @@ export const UserData = () => {
         Technologies used in this project:
       </Typography>
       <List>
-        <ListItem>React JS</ListItem>
-        <ListItem>Typescript</ListItem>
-        <ListItem>Redux - Redux Toolkit for the User Data</ListItem>
-        <ListItem>React Query - Fetch the Forex API data</ListItem>
-        <ListItem>React Router - Navigation between sections</ListItem>
-        <ListItem>Material UI - with Styled Components</ListItem>
-        <ListItem>Formik - User Login Form</ListItem>
-        <ListItem>Yup - User Login Form Schema Validation</ListItem>
-        <ListItem>
-          Cypress - Component Tests for the User Login Form and Navigation
-        </ListItem>
+        {technologiesUsed.map((technology) => (
+          <ListItem key={technology}>{technology}</ListItem>
+        ))}
       </List>
     </>
   );
